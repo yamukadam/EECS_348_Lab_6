@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 
-#define file_name "input.txt"
+#define file_name "matrix_input.txt"
 
 static const int max_size = 100;
 void read_file(int matrixA[max_size][max_size],int matrixB[max_size][max_size],int &size);
@@ -63,32 +63,33 @@ void print_matrix(int matrix[max_size][max_size], int &size){
 }
 
 void add_matrices(int matrixA[max_size][max_size], int matrixB[max_size][max_size], int &size){
+    int matrixResult[max_size][max_size];
     for (int i =0; i<size; i++){
         for (int j=0; j<size; j++){
-            std::cout<< matrixA[i][j] + matrixB[i][j] << " ";
+            matrixResult[i][j] = matrixA[i][j] + matrixB[i][j];
         }
-        std::cout<< std::endl;
     }
-    std::cout<< std::endl;
+    print_matrix(matrixResult, size);
 }
 
 void multiply_matrices(int matrixA[max_size][max_size], int matrixB[max_size][max_size], int &size){
-    int matrixC[max_size][max_size];
+    int matrixResult[max_size][max_size] = {0};
     for (int i =0; i<size; i++){
         for (int j=0; j<size; j++){
             for (int k = 0; k<size; k++){
-                matrixC[i][j] += matrixA[i][k] * matrixB[k][j];
+                matrixResult[i][j] += matrixA[i][k] * matrixB[k][j];
             }
         }
     }
-    print_matrix(matrixC, size);
+    print_matrix(matrixResult, size);
 }
 
 void matrix_difference(int matrixA[max_size][max_size], int matrixB[max_size][max_size], int &size){
+    int matrixResult[max_size][max_size];
     for (int i =0; i<size; i++){
         for (int j=0; j<size; j++){
-            std::cout<< matrixA[i][j] - matrixB[i][j] << " ";
+            matrixResult[i][j] = matrixA[i][j] - matrixB[i][j];
         }
-        std::cout<< std::endl;
     }
+    print_matrix(matrixResult, size);
 }
